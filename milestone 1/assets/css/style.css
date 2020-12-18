@@ -180,6 +180,30 @@ aside{
     height: calc(100vh - 300px);
     background-image: url("../img/mine.jpg");
     overflow-y: scroll;
+    flex-direction: column;
+}
+
+.message{
+    max-width: 55%;
+    margin: 5px 20px;
+    border-radius: 5%;
+}
+
+.user_uno{
+    background-color: #DCF8C6;
+    align-self: flex-end;
+}
+
+.user_due{
+    background-color:white;
+    align-self: flex-start;
+}
+
+.contenuto{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
 }
 /* /chat */
 
