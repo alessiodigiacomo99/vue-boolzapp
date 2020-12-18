@@ -5,6 +5,7 @@ nome e immagine di ogni contatto */
 let root = new Vue({
     el: "#root",
     data:{
+        userChat:[],
         contacts: [
             michele = {
                 name: "michele",
@@ -27,5 +28,18 @@ let root = new Vue({
                 avatar: "./assets/img/avatar_5.jpg"
             },
         ]
+    },
+    methods:{
+        chat(index){
+            if(this.userChat.length >= 1){
+                this.userChat.splice(0);
+                this.userChat.push(this.contacts[index]);
+            }
+        }
+    },
+    created(){
+        if(this.userChat.length === 0){
+            this.userChat.push(this.contacts[0])
+        }
     }
 })

@@ -9,7 +9,8 @@
     </head>
     <body>
        
-        <div id="root">
+        <div id="root" class="container d-flex">
+
             <aside>
 
                 <div id="side_header" class="d-flex">
@@ -44,7 +45,7 @@
 
                 <div id="contact">
                     <ul>
-                        <li v-for ="contatto in contacts" class="d-flex">
+                        <li v-for ="(contatto, index) in contacts" class="d-flex" @click = "chat(index)">
                             <div>
                                 <img :src="contatto.avatar" class ="icona" alt="">
                             </div>
@@ -53,8 +54,49 @@
                     </ul>
                 </div>
                 <!-- /#contact -->
+
             </aside>
             <!-- /aside -->
+
+            <div id="main">
+
+                <div id="main_header" class="d-flex">
+                    <div id="main_header_left" class="d-flex">
+                        <div>
+                            <img :src="userChat[0].avatar" alt="" class="icona">
+                        </div>
+                        <div>
+                            <div id="main_header_name" v-text = "userChat[0].name"></div>
+                            <div id="orario" >Ultimo accesso oggi alle</div>
+                        </div>
+                    </div>
+                    <!-- /main_header_left -->
+
+                    <div id="main_header_right">
+                        <i class="fas fa-search"></i>
+                        <i class="fas fa-paperclip"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                    <!-- /main_header_right -->
+
+                </div>
+                <!-- /#main_header -->
+
+                <div id="chat">
+
+                </div>
+                <!-- /#chat -->
+
+                <div id="type" class="d-flex">
+                    <i class="far fa-smile"></i>
+                    <input type="text" placeholder="Scrivi un messaggio">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <!-- /#type -->
+
+            </div>
+            <!-- /#main -->
+            
         </div>
 
 
