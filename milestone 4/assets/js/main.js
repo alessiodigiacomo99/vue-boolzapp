@@ -77,6 +77,7 @@ let root = new Vue({
                 ]
             },
         ],
+        nuovaListaDiContatti:[],
         newMessage: "",
         messaggioDiCortesia : "ok",
         x : document.getElementsByClassName("orario"),
@@ -84,8 +85,22 @@ let root = new Vue({
         search :"",
     },
     methods:{
-        search(){
-            
+        ricerca(){
+            if(this.search.length > 0){
+                this.nuovaListaDiContatti.splice(0);
+                for (let i = 0; i < this.contacts.length; i++) {
+                    var nuovoNome = this.contacts[i].name.slice(0, (this.search.length)); 
+                    if(nuovoNome == this.search){
+                        this.nuovaListaDiContatti.push(this.contacts[i]);
+                    }   
+                }
+    
+            }else{
+                this.nuovaListaDiContatti.splice(0);
+                for (let i = 0; i < this.contacts.length; i++) {
+                    this.nuovaListaDiContatti.push(this.contacts[i])
+                }; 
+            }
         },
         type(){
             let now = dayjs();
@@ -118,7 +133,7 @@ let root = new Vue({
         chat(index){
             if(this.userChat.length >= 1){
                 this.userChat.splice(0);
-                this.userChat.push(this.contacts[index]);
+                this.userChat.push(this.nuovaListaDiContatti[index]);
             }
             
         },
@@ -126,6 +141,9 @@ let root = new Vue({
     created(){
         if(this.userChat.length === 0){
             this.userChat.push(this.contacts[0])
+        };
+        for (let i = 0; i < this.contacts.length; i++) {
+            this.nuovaListaDiContatti.push(this.contacts[i])
         };
         let month = this.now.$M + 1;
         let day = this.now.$D;
@@ -141,14 +159,7 @@ let root = new Vue({
         };
         let y = document.getElementsByClassName("giorno");
         y[0].innerHTML = giorno;   
-
     },
-    updated(){
-
-    }
 })
-/* Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando
-“enter” il testo viene aggiunto al thread sopra, come messaggio verde
-● Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà
-un “ok” come risposta, che apparirà dopo 1 secondo.
-mancano le date */
+/* Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i
+contatti il cui nome contiene le lettere inserite */

@@ -38,14 +38,14 @@
                 <!-- /#notifiche -->
 
                 <div id="search" class="d-flex">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Cerca o inizia una nuova chat" v-model = "search">
+                    <i class="fas fa-search" @click = ricerca></i>
+                    <input type="text" placeholder="Cerca o inizia una nuova chat" v-model = "search" @keyup.enter = ricerca>
                 </div>
                 <!-- /#search -->
 
                 <div id="contact">
                     <ul>
-                        <li v-for ="(contatto, index) in contacts" class="d-flex" @click = "chat(index)">
+                        <li v-for ="(contatto, index) in nuovaListaDiContatti" class="d-flex" @click = "chat(index)">
                             <div>
                                 <img :src="contatto.avatar" class ="icona" alt="">
                             </div>
@@ -99,7 +99,7 @@
 
                         <div class= "message" :class ="thread.status" >
                             <span class="contenuto" v-text="thread.text"></span>
-                            <div v-text="thread.date"></div>
+                            <div class = "ora" v-text="thread.date"></div>
                         </div>
 
                     </div>
