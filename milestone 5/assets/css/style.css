@@ -153,6 +153,7 @@ aside{
     height: 80px;
     align-items: center;
     cursor: pointer;
+    position: relative;
 }
 
 #contact li:hover{
@@ -160,9 +161,21 @@ aside{
     transition: all 0.2s;
 }
 
-#contact span{
-    text-transform: capitalize;
+#contact .ora{
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    color: grey;
+}
+
+#contact .last_mex{
+    color: grey;
     margin-left: 10px;
+}
+
+#contact .nome{
+    margin-left: 10px;
+    text-transform: capitalize;
     font-size: 1.4rem;
 }
 /* /contact */

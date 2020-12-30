@@ -52,7 +52,11 @@
                             <div>
                                 <img :src="contatto.avatar" class ="icona" alt="">
                             </div>
-                            <span v-text ="contatto.name"></span>
+                            <div>
+                                <div class="nome" v-text ="contatto.name"></div>
+                                <div class="last_mex"v-text = "contatto.newChat[contatto.newChat.length - 1].text"></div>
+                            </div>
+                            <div class="ora" v-text="contatto.newChat[contatto.newChat.length - 1].date"></div>
                         </li>
                     </ul>
                 </div>
