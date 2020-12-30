@@ -8,7 +8,10 @@
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
-       
+        
+        <div id = "top"></div>
+        <div id="bottom"></div>
+
         <div id="root" class="container d-flex">
 
             <aside>
@@ -85,24 +88,15 @@
                 <!-- /#main_header -->
 
                 <div id="chat" class="d-flex">
-                    <div class="message received" v-for ="(messaggi, index) in userChat[0].messageUno">
-                        <span class="contenuto" v-text="messaggi"></span>
-                        <div class = "d-flex orario"></div>
-                    </div>
-
-                    <div class="message sent" v-for="(messaggi, index) in userChat[0].messageDue">
-                        <span class="contenuto" v-text="messaggi"></span>
-                        <div class = "d-flex orario"></div>
-                    </div>
                     
                     <div id="nuova_conversazione" class="d-flex"  v-for = "(thread,index) in userChat[0].newChat">
 
                         <div class= "message" :class ="thread.status">
                             <div class="d-flex">
                                 <span class="contenuto" v-text="thread.text"></span>
-                                <div id="box-elimina-mex" v-if = "thread.status === 'sent'">
-                                    <i class="fas fa-chevron-down" @click = "click"></i>
-                                    <div id="elimina-mex"  @click = "rimuoviMessaggio(index)" class="d-flex d-none"><span>Elimina Messaggio</span></div>
+                                <div class="box-elimina-mex">
+                                    <i class="fas fa-chevron-down"></i>
+                                    <div class="elimina-mex"  @click = "rimuoviMessaggio(index)" class="d-flex  "><span>Elimina Messaggio</span></div>
                                 </div>
                             </div>
                             <div class = "ora" v-text="thread.date"></div>
@@ -125,7 +119,7 @@
             <!-- /#main -->
 
         </div>
-
+        <!-- /root -->
         <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
         <script src="./assets/js/main.js"></script>

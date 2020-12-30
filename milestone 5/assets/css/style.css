@@ -5,7 +5,9 @@
 }
 
 body{
-    background-image: url("../img/mine.jpg");
+    position: relative;
+    width: 100vw;
+    height: 100vh;
 }
 
 .d-flex{
@@ -29,10 +31,29 @@ i{
     display: block;
 }
 /* /utility class */
+#top{
+    width: 100vw;
+    background-color: blue;
+    height: 20vh;
+    position: absolute;
+    z-index: 1;
+}
+
+#bottom{
+    height: 80vh;
+    width: 100vw;
+    background-color: coral;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+}
+
 .container{
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 aside{
@@ -194,10 +215,6 @@ aside{
     border-radius: 5%;
 }
 
-#nuova_conversazione .message:hover #box-elimina-mex{
-    display: block;
-}
-
 .received{
     background-color:white;
     align-self: flex-start;
@@ -224,20 +241,24 @@ aside{
     color: grey;
 }
 
-#nuova_conversazione #box-elimina-mex{
-    display: none;
+#nuova_conversazione .box-elimina-mex{
     align-self: flex-end;
     position: relative;
 }
 
-#elimina-mex{
+#nuova_conversazione .box-elimina-mex:hover .elimina-mex{
+    display: block;
+}
+
+.elimina-mex{
+    display: none;
     background-color: white;
     position: absolute;
     top: 0;
     right: 0;
     padding: 10px;
     height: 60px;
-    border: 1px solid grey;
+    border: 1px solid black;
     box-shadow: 2px 2px 2px grey;
     color: rgb(83, 83, 83);
     align-items: center;
@@ -262,13 +283,6 @@ aside{
     padding: 5px 10px;
     font-size: 0.8rem;
     color: grey;
-}
-
-#nuova_conversazione .ora{
-    justify-content: flex-end;
-}
-
-#nuova_conversazione .ora{
     justify-content: flex-start;
 }
 /* /chat */
