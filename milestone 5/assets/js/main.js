@@ -61,8 +61,8 @@ let root = new Vue({
                         status: "sent",
                     }
                 ]
-                },
-                samuele = {
+            },
+            samuele = {
                     name: "samuele",
                     avatar: "./assets/img/avatar_3.jpg",
                     newChat: [
@@ -84,8 +84,8 @@ let root = new Vue({
                             status: "sent",
                         }
                     ]
-                },
-                gianni = {
+            },
+            gianni = {
                     name: "gianni",
                     avatar: "./assets/img/avatar_4.jpg",
                     newChat: [
@@ -113,8 +113,8 @@ let root = new Vue({
                             status: "sent",
                         }
                     ]
-                },
-                piero = {
+            },
+            piero = {
                     name: "piero",
                     avatar: "./assets/img/avatar_5.jpg",
                     newChat: [
@@ -244,23 +244,6 @@ let root = new Vue({
         search :"",
     },
     methods:{
-        ricerca(){
-            if(this.search.length > 0){
-                this.nuovaListaDiContatti.splice(0);
-                for (let i = 0; i < this.contacts.length; i++) {
-                    var nuovoNome = this.contacts[i].name.slice(0, (this.search.length)); 
-                    if(nuovoNome == this.search){
-                        this.nuovaListaDiContatti.push(this.contacts[i]);
-                    }   
-                }
-                
-            }else{
-                this.nuovaListaDiContatti.splice(0);
-                for (let i = 0; i < this.contacts.length; i++) {
-                    this.nuovaListaDiContatti.push(this.contacts[i])
-                }; 
-            }
-        },
         type(){
             let now = dayjs();
             let hour = now.$H;
@@ -318,6 +301,23 @@ let root = new Vue({
         let y = document.getElementsByClassName("giorno");
         y[0].innerHTML = giorno;   
     },
+    beforeUpdate(){
+        if(this.search.length > 0){
+            this.nuovaListaDiContatti.splice(0);
+            for (let i = 0; i < this.contacts.length; i++) {
+                var nuovoNome = this.contacts[i].name.slice(0, (this.search.length)); 
+                if(nuovoNome == this.search){
+                    this.nuovaListaDiContatti.push(this.contacts[i]);
+                }   
+            }
+            
+        }else{
+            this.nuovaListaDiContatti.splice(0);
+            for (let i = 0; i < this.contacts.length; i++) {
+                this.nuovaListaDiContatti.push(this.contacts[i])
+            }; 
+        }
+    }
 })
 /* cliccando sul messaggio appare un menu a tendina che
 permette di cancellare il messaggio selezionato */

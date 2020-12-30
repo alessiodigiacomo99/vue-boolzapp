@@ -265,20 +265,6 @@ aside{
     cursor: pointer;
 }
 
-.orario{
-    padding: 5px 10px;
-    font-size: 0.8rem;
-    color: grey;
-}
-
-.received .orario {
-    justify-content: flex-end;
-}
-
-.sent .orario{
-    justify-content: flex-start;
-}
-
 #nuova_conversazione .ora{
     padding: 5px 10px;
     font-size: 0.8rem;

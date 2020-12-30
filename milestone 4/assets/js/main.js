@@ -85,23 +85,6 @@ let root = new Vue({
         search :"",
     },
     methods:{
-        ricerca(){
-            if(this.search.length > 0){
-                this.nuovaListaDiContatti.splice(0);
-                for (let i = 0; i < this.contacts.length; i++) {
-                    var nuovoNome = this.contacts[i].name.slice(0, (this.search.length)); 
-                    if(nuovoNome == this.search){
-                        this.nuovaListaDiContatti.push(this.contacts[i]);
-                    }   
-                }
-    
-            }else{
-                this.nuovaListaDiContatti.splice(0);
-                for (let i = 0; i < this.contacts.length; i++) {
-                    this.nuovaListaDiContatti.push(this.contacts[i])
-                }; 
-            }
-        },
         type(){
             let now = dayjs();
             let hour = now.$H;
@@ -160,6 +143,23 @@ let root = new Vue({
         let y = document.getElementsByClassName("giorno");
         y[0].innerHTML = giorno;   
     },
+    beforeUpdate(){
+        if(this.search.length > 0){
+            this.nuovaListaDiContatti.splice(0);
+            for (let i = 0; i < this.contacts.length; i++) {
+                var nuovoNome = this.contacts[i].name.slice(0, (this.search.length)); 
+                if(nuovoNome == this.search){
+                    this.nuovaListaDiContatti.push(this.contacts[i]);
+                }   
+            }
+            
+        }else{
+            this.nuovaListaDiContatti.splice(0);
+            for (let i = 0; i < this.contacts.length; i++) {
+                this.nuovaListaDiContatti.push(this.contacts[i])
+            }; 
+        }
+    }
 })
 /* Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i
 contatti il cui nome contiene le lettere inserite */
